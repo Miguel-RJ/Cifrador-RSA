@@ -10,13 +10,14 @@ import javax.crypto.NoSuchPaddingException;
 
 public class Cifrador {
 
-    static RSA rsa = new RSA();
+    public RSA rsa = new RSA();
 
-	public Cifrador() {
+	public Cifrador() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		// TODO Auto-generated constructor stub
+	    rsa.genKeyPair(4096);
 	}
 	
-	public static String Cifrar(String valor) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, IOException, InvalidKeySpecException, NoSuchProviderException 
+	public String Cifrar(String valor) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, IOException, InvalidKeySpecException, NoSuchProviderException 
 	{
 	 //Definimos un texto a cifrar
 
@@ -26,8 +27,6 @@ public class Cifrador {
 	    
 	    //Generamos un par de claves
 	    //Admite claves de 512, 1024, 2048 y 4096 bits
-	    rsa.genKeyPair(4096);
-	    
 	    
 	    String file_private = "/tmp/rsa.pri";
 	    String file_public = "/tmp/rsa.pub";
@@ -47,7 +46,7 @@ public class Cifrador {
 	    return secure;
 	}
     
-	public static String Descifrar(String valor) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException
+	public String Descifrar(String valor) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException
 	{
 	    //A modo de ejemplo creamos otra clase rsa
 	    

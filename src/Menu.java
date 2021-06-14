@@ -77,6 +77,7 @@ public class Menu extends JFrame {
 		            String ruta = fileChooser.getSelectedFile().getAbsolutePath();                                        
 		            File f = new File(ruta);
 		            entrada = new Scanner(f);
+		            Cifrador cifrador = new Cifrador();
 		            while (entrada.hasNext()) 
 		            {
 		            	listaSinCifrar.add(entrada.nextLine());
@@ -84,7 +85,7 @@ public class Menu extends JFrame {
 		            
 		            for(int i = 0; i <= listaSinCifrar.size() - 1; i++) {
 		       
-		            	listaCifrada.add(Cifrador.Cifrar(listaSinCifrar.get(i)));
+		            	listaCifrada.add(cifrador.Cifrar(listaSinCifrar.get(i)));
 		            }
 		            
 		            try {
@@ -145,6 +146,7 @@ public class Menu extends JFrame {
 		            String ruta = fileChooser.getSelectedFile().getAbsolutePath();                                        
 		            File f = new File(ruta);
 		            entrada = new Scanner(f);
+		            Cifrador cifrador = new Cifrador();
 		            while (entrada.hasNext()) 
 		            {
 		            	listaCifrada.add(entrada.nextLine());
@@ -152,7 +154,7 @@ public class Menu extends JFrame {
 		            
 		            for(int i = 0; i <= listaCifrada.size() - 1; i++) {
 		       
-		            	listaDescifrada.add(Cifrador.Descifrar(listaCifrada.get(i)));
+		            	listaDescifrada.add(cifrador.Descifrar(listaCifrada.get(i)));
 		            }
 		            
 		            try {
